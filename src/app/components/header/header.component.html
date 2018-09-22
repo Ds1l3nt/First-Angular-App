@@ -1,22 +1,50 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-   
-  <h5 class="my-0  font-weight-normal shopName"><a routerLink="" >Awesome Shop</a></h5>
-    
-    <nav class="my-2 my-md-0 ml-md-3 ">
-      <a class="p-2 text-dark" routerLink="/products">Products</a>
-      <a class="p-2 text-dark" routerLink="/about">About Us</a>
-      <a class="p-2 text-dark" routerLink="/news">News</a>
-      <a class="p-2 text-dark" routerLink="/gallery">Gallery</a>
-      <a class="p-2 text-dark" routerLink="/contact">Contact</a>
-    </nav>
+<div class="container">
+  <nav class="navbar-nav align-items-center  navbar-light">
+      <div class="ml-auto navbar-nav">
+          <ul class="nav">
+              <li class="nav-item">
+                  <a *ngIf="!this.auth.isLoggedIn()" class="nav-link p-2" routerLink="/signup"><span class="fas fa-registered px-1"></span>Register</a>
+              </li>
+              <li class="nav-item">
+                  <a *ngIf="!this.auth.isLoggedIn()" class="nav-link p-2" routerLink="/signin"><span class="far fa-user px-1"></span>Login</a>
+              </li>
+              <li class="nav-item">
+                <a *ngIf="this.auth.isLoggedIn()" class="nav-link p-2" routerLink="/account"><span class="fas fa-user-tie px-1"></span>Welcome {{ this.auth.user().name }}</a>
+              </li>
+              <li class="nav-item">
+                <a *ngIf="this.auth.isLoggedIn()" class="nav-link p-2" href="#" (click)="onLogout()"><span class="fas fa-sign-out-alt px-1"></span>Logout</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link p-2" routerLink="/cart"><i class="fas fa-shopping-cart px-1"></i>{{ this.CartSvc.getTotalCount()}}</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" routerLink="/products">Awesome Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-
-    <a class="btn btn-outline-primary" routerLink="/cart">Cart<span class="badge badge-light">{{ this.CartSvc.getTotalCount()}}</span></a>
-
-    <a *ngIf="!this.auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/signup">Register</a>
-    <a *ngIf="!this.auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/signin">Login</a>
-    <a *ngIf="this.auth.isLoggedIn()">Welcome {{ this.auth.user().name }}</a>
-    <a *ngIf="this.auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/account">My Account</a>
-    <a (click)="onLogout()" *ngIf="this.auth.isLoggedIn()"  class="btn btn-outline-primary" >Logout</a>
-    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/products">Products</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About us</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/news">News</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/gallery">Gallery</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/Contact">Contact us</a>
+      </li>
+    </ul>
+  </div>
+  </nav>
 </div>
+<div class="border-bottom"></div>
