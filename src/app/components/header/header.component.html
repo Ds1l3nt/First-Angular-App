@@ -1,0 +1,22 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+   
+  <h5 class="my-0  font-weight-normal shopName"><a routerLink="" >Awesome Shop</a></h5>
+    
+    <nav class="my-2 my-md-0 ml-md-3 ">
+      <a class="p-2 text-dark" routerLink="/products">Products</a>
+      <a class="p-2 text-dark" routerLink="/about">About Us</a>
+      <a class="p-2 text-dark" routerLink="/news">News</a>
+      <a class="p-2 text-dark" routerLink="/gallery">Gallery</a>
+      <a class="p-2 text-dark" routerLink="/contact">Contact</a>
+    </nav>
+
+
+    <a class="btn btn-outline-primary" routerLink="/cart">Cart<span class="badge badge-light">{{ this.CartSvc.getTotalCount()}}</span></a>
+
+    <a *ngIf="!this.auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/signup">Register</a>
+    <a *ngIf="!this.auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/signin">Login</a>
+    <a *ngIf="this.auth.isLoggedIn()">Welcome {{ this.auth.user().name }}</a>
+    <a *ngIf="this.auth.isLoggedIn()" class="btn btn-outline-primary" routerLink="/account">My Account</a>
+    <a (click)="onLogout()" *ngIf="this.auth.isLoggedIn()"  class="btn btn-outline-primary" >Logout</a>
+    
+</div>
